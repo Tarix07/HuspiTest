@@ -1,0 +1,119 @@
+.calendar-container {
+    width: 350px;
+    height: auto;
+    top:50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    border-collapse: separate;
+    font-family: "Open Sans", Calibri, Arial, sans-serif;
+    background-color: #ffffff;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3125);
+    border-radius: 5px;
+    font-size: 20px;
+  }
+
+  .calendar-container .calendar-header {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: table;
+    border-spacing: 0;
+    border-collapse: separate;
+    background-color: #cd283c59;
+    color: #cd283c;
+    border-radius: 5px 5px 0 0;
+    font-size: 25px;
+    cursor: default;
+  }
+
+  .calendar-month {
+    background-color: #e0828e;
+    color:rgb(0, 0, 0);
+  }
+
+  .calendar-month span {
+      margin:  20px;
+  }
+
+  .calendar-buttons{
+      display: flex;
+      justify-content: space-around;
+  }
+
+  .calendar-container .calendar-button {
+    cursor: pointer;
+    color: #cd283c;
+    margin: 0;
+    padding: 0;
+    display:flex;
+    line-height: 30px;
+  }
+  
+  .calendar-button:hover{
+      color: #920c1c;
+      text-shadow: -2px -2px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  .calendar-container .calendar-date {
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+  .calendar-container .calendar-date table {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+
+  .calendar-date th{
+    width: 120px;
+  }
+  .calendar-container .calendar-date table thead tr{
+    width: 110px;  
+    color: #ffffff;
+    padding: 0;
+    font-size: 20px;
+    text-align: center;
+    font-weight: normal;
+    line-height: 35px;
+    border: 0;
+    background-color: #223344;
+    cursor: default;
+  }
+  .calendar-container .calendar-date table tbody tr{
+    color: #334455;
+    cursor: pointer;
+    position: relative;
+    font-size: 15px;
+    line-height: 35px;
+    background-color: #ffffff;
+  }
+
+  .calendar-date .empty{
+    background-color: #acabab99;
+    cursor: default;
+  }
+
+   .calendar-date .today {
+    color: #3296c8;
+    font-weight: bold;
+    font-size: x-large;
+  }
+
+  .calendar-date .today:hover{
+    font-size: x-large;
+  }
+
+   .calendar-date .fill:hover {
+    color: #cd283c; 
+    font-size:large;
+    background: #ffe4c4ba;;
+    font-weight: bolder;
+  }
