@@ -1,8 +1,62 @@
 import React from "react";
 import "./calendar.css";
+import Modal from "../Modal/modal";
+
+
+class Day extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            toShow: false,
+            toEdit: false,
+            note: " ",                
+        }
+    };
+
+    show = () => {
+        this.setState({toShow:true})
+    }
+
+    close = () => {
+        this.setState({toShow:false})
+    }
+
+    save = (text) => {
+        this.setState({note: text});
+        this.setState({toEdit: true});
+        this.setState({toShow: false})
+    }
+
+    render(){
+           let edited  = this.state.toEdit ? "edited" : "";
+           return(
+            <div>  
+            <div className ={`calendar-day ${edited}`} onClick  = {()=>this.show()}>
+                <div className ="showNote" >
+                <p >
+                    Note: {this.state.note}
+                </p>
+                </div>
+                <div className="dateDay">{this.props.num}</div>    
+            </div>
+            <Modal head  = {"Note for " + this.props.num + "th " + this.props.month + " " + this.props.year}  
+                   text = {this.state.note}
+                   isShown ={this.state.toShow} 
+                   closeWindow = {()=>{this.close()}} 
+                   saveNote = {this.save}/>
+            </div>
+        );
+    }
+}
 
 
 class Calendar extends React.Component {
+    constructor(props){
+        super (props);
+        this.state = {
+             date: new Date()
+        };
+    }
   weekdayshort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   monthes = [
@@ -19,10 +73,6 @@ class Calendar extends React.Component {
     "November",
     "December"
   ];
-
-  state = {
-    date: new Date()
-  };
 
   daysInMonth = () => {
     let date = new Date(this.year(), this.month() + 1, 0);
@@ -46,11 +96,11 @@ class Calendar extends React.Component {
   };
 
   onPrev = () => {
-    let prev = new Date(this.year(), this.month() - 1);
+    let prev = new Date(this.year(), this.month() - 1, this.currentDay());
     this.setState({ date: prev });
   };
   onNext = () => {
-    let prev = new Date(this.year(), this.state.date.getMonth() + 1);
+    let prev = new Date(this.year(), this.month() + 1, this.currentDay());
     this.setState({ date: prev });
   };
 
@@ -83,8 +133,8 @@ class Calendar extends React.Component {
         k > 0 && k <= daysInMonth
           ? tr.push(
               <td key={k} className={`calendar-day fill ${currentDay}`}>
-                {k}
-              </td>
+                <Day num={k} month = {this.monthes[this.month()]} year = {this.year()}/>
+               </td> 
             )
           : tr.push(<td className="calendar-day empty">{""}</td>);
         k++;

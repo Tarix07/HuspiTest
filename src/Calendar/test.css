@@ -15,7 +15,7 @@
     font-family: "Open Sans", Calibri, Arial, sans-serif;
   }
 
-  .calendar-container .calendar-header {
+  .calendar-header {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -43,7 +43,7 @@
       justify-content: space-around;
   }
 
-  .calendar-container .calendar-button {
+ .calendar-button {
     cursor: pointer;
     color: #cd283c;
     margin: 0;
@@ -57,12 +57,12 @@
       text-shadow: -2px -2px 0 rgba(0, 0, 0, 0.15);
   }
 
-  .calendar-container .calendar-date {
+ .calendar-date {
     margin: 0;
     padding: 0;
     display: block;
   }
-  .calendar-container .calendar-date table {
+  .calendar-date table {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -70,14 +70,14 @@
     border-collapse: collapse;
   }
 
-  .calendar-container .calendar-date table tbody {
+  .calendar-date table tbody {
     border-radius: 0 0 5px 5px;
   }
 
   .calendar-date th{
     width: 120px;
   }
-  .calendar-container .calendar-date table thead tr{
+   .calendar-date table thead tr{
     width: 110px;  
     color: #ffffff;
     padding: 0;
@@ -89,7 +89,7 @@
     background-color: #223344;
     cursor: default;
   }
-  .calendar-container .calendar-date table tbody tr{
+   .calendar-date table tbody tr{
     color: #334455;
     cursor: pointer;
     position: relative;
