@@ -9,7 +9,7 @@ class Day extends React.Component{
         this.state = {
             toShow: false,
             toEdit: false,
-            note: " ",                
+            note: "",                
         }
     };
 
@@ -23,28 +23,32 @@ class Day extends React.Component{
 
     save = (text) => {
         this.setState({note: text});
-        this.setState({toEdit: true});
-        this.setState({toShow: false})
+        this.setState({toShow: false});
+        if (text ===""){
+          this.setState({toEdit:false});
+        } 
+        else this.setState({toEdit:true}); 
     }
+
 
     render(){
            let edited  = this.state.toEdit ? "edited" : "";
            return(
-            <div>  
-            <div className ={`calendar-day ${edited}`} onClick  = {()=>this.show()}>
-                <div className ="showNote" >
-                <p >
+            <td className={`calendar-day fill ${this.props.currentDay}`}> 
+              <div className ={`calendar-day ${edited}`} onClick = {()=>this.show()}>
+                <div>{this.props.num}</div> 
+                 <div className ="showNote" >
+                   <p>                
                     Note: {this.state.note}
-                </p>
+                    </p>
                 </div>
-                <div className="dateDay">{this.props.num}</div>    
-            </div>
+              </div>   
             <Modal head  = {"Note for " + this.props.num + "th " + this.props.month + " " + this.props.year}  
                    text = {this.state.note}
-                   isShown ={this.state.toShow} 
+                   isShown ={this.state.toShow}   
                    closeWindow = {()=>{this.close()}} 
-                   saveNote = {this.save}/>
-            </div>
+                   saveNote = {this.save}/>          
+            </td>
         );
     }
 }
@@ -54,10 +58,11 @@ class Calendar extends React.Component {
     constructor(props){
         super (props);
         this.state = {
-             date: new Date()
+             date: new Date(),
         };
     }
-  weekdayshort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  weekdayshort = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
   monthes = [
     "January",
@@ -88,7 +93,8 @@ class Calendar extends React.Component {
 
   firstDay = () => {
     let firstDay = new Date(this.year(), this.month()).getDay();
-    return firstDay;
+
+    return (firstDay +6 )%7;
   };
 
   month = () => {
@@ -132,14 +138,14 @@ class Calendar extends React.Component {
         }
         k > 0 && k <= daysInMonth
           ? tr.push(
-              <td key={k} className={`calendar-day fill ${currentDay}`}>
-                <Day num={k} month = {this.monthes[this.month()]} year = {this.year()}/>
-               </td> 
+               <Day key={k+""+this.month()+""+this.year()} 
+                num={k} month = {this.monthes[this.month()]} 
+                year = {this.year()} currentDay={currentDay}/>
             )
-          : tr.push(<td className="calendar-day empty">{""}</td>);
+          : tr.push(<td key = {"em"+k} className="calendar-day empty">{""}</td>);
         k++;
       }
-      table.push(<tr>{tr}</tr>);
+      table.push(<tr key ={i}>{tr}</tr>);
     }
 
     return (
@@ -167,7 +173,7 @@ class Calendar extends React.Component {
               this.onNext();
             }}
             className="calendar-button"
-          >► </span>
+          > ► </span>
           </div>
         </div>
         <div className="calendar-date">
