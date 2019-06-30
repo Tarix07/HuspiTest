@@ -2,14 +2,15 @@
     width: 315px;
     top: 15%;
     background-color: #ffffff;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3125);
-    border-radius: 5px;
+    box-shadow: 0 5px 5px 1px rgba(0, 0, 0, 0.3125);
     font-size: 20px;
+    border-radius: 5px;
     padding: 0;
     display: block;
     position: absolute;
     border-collapse: separate;
     font-family: "Open Sans", Calibri, Arial, sans-serif;
+
   }
 
   .calendar-container .calendar-header {
@@ -23,6 +24,7 @@
     color: #cd283c;
     font-size: 25px;
     cursor: default;
+    border-radius: 5px 5px 0 0;
   }
 
   .calendar-month {
@@ -82,19 +84,7 @@
     background-color: #223344;
     cursor: default;
   }
-  /*.calendar-container .calendar-date table thead tr{
-    width: 110px;  
-    color: #ffffff;
-    padding: 0;
-    font-size: 20px;
-    text-align: center;
-    font-weight: normal;
-    line-height: 35px;
-    border: 0;
-    background-color: #223344;
-    cursor: default;
-  }
-  */
+  
   .calendar-container .calendar-date table tbody tr{
     color: #334455;
     cursor: pointer;
@@ -153,6 +143,7 @@
     font-size: 20px; 
     top:110%;
     left: 0%;
+    box-shadow: 0 5px 5px 1px rgba(0, 0, 0, 0.3125);
   }
 
   .calendar-day .showNote p{
